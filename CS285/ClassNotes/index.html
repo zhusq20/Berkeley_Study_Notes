@@ -1,0 +1,690 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>CS 285 Notes</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="5d32a19a-08a1-4e1b-aed4-e7caec03771e" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🧙🏽‍♂️</span></div><h1 class="page-title">CS 285 Notes</h1></header><div class="page-body"><p id="b767ff3b-3896-48ef-8338-a2fd7724f0dc" class="">Created by <a href="https://github.com/ToiletCommander">Yunhao Cao</a> (Github@ToiletCommander) in Fall 2022 for UC Berkeley CS 285 (Sergey Levine).</p><blockquote id="b956cb10-48f6-4157-bdbb-ac0788b38c10" class="">Reference Notice: Material highly and mostly derived from Prof Levine&#x27;s lecture slides, some ideas were borrowed from wikipedia &amp; CS189.</blockquote><p id="d1692611-e632-4399-be3d-c1f44d45e75c" class="">This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a></p><h1 id="0bbe0e48-ec6a-4335-b9fa-0a59d6f401d3" class="">General Introduction to RL (LEC 1)</h1><div id="0e9267d8-e08e-44bb-acb9-af6e68888a3b" class="column-list"><div id="e2009162-ed0c-4c52-8347-f6e65f18f258" style="width:62.5%" class="column"><figure id="afc109fe-4174-48d0-a7ae-7f17719c9140" class="image"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled.png"><img style="width:640px" src="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled.png"/></a></figure><p id="f1f11487-3ed1-44fc-91cf-d9f77f4a22f3" class=""><strong>Supervised ML</strong></p><p id="0df52a2b-c9b0-426a-9d34-1fe690ab0cc9" class="">Given <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>D</mi><mo>=</mo><mo stretchy="false">{</mo><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">D=\{(x_i,y_i)\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)}</span></span></span></span></span><span>﻿</span></span></p><p id="c03f5ef7-7a3d-4e1d-aa2e-8d4d7c1d4e21" class="">we will learn to predict <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span></span></span></span></span><span>﻿</span></span> from <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span></span><span>﻿</span></span>. </p><p id="c26500a7-8c67-4d94-8999-eabef7c9d154" class="">
+</p><p id="7597e482-85eb-477e-bcc7-f445a4e67e9e" class="">usually assumes:</p><p id="39e7f178-a6d0-4699-8629-4179eae6d1ae" class="">i.i.d. data (previous x,y pair does not affect next x, y pair)</p><p id="1f9cf3cf-875b-4c0c-b12d-4d211150a374" class="">known ground truth outputs in the training</p><p id="b88360a4-e631-49b8-baa8-77049413124e" class="">
+</p><p id="1e6c3b3e-c3aa-4fe7-a08f-c774d24d9de4" class="">Problem:</p><p id="8246d361-e69a-4745-98c7-98cce707d6de" class="">Cannot adapt if something fails.</p><p id="8b6e5eed-4cb5-4636-835b-636305601d65" class="">
+</p></div><div id="2698f5ab-99d0-40a7-bf22-544ff375baaf" style="width:37.50000000000001%" class="column"><figure id="f940b9d7-86f5-4591-88e4-cb6b1500b99d" class="image"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%201.png"><img style="width:384px" src="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%201.png"/></a></figure><p id="863420e4-bdfb-4274-bfac-0f9deee8883c" class=""><strong>Reinforcement Learning:</strong></p><p id="246cd94c-57e0-4443-b7b8-4c86fabe6b89" class="">Data is not i.i.d: previous outputs influence future inputs!</p><p id="6dffabe8-f0e6-4537-a4dd-039833563f4b" class="">Ground truth answer is not known, only know if we succeeded or failed (but we generally know the reward)</p><p id="35b684b9-def4-4b69-b6a9-1e8921767b75" class="">
+</p><p id="675df1c8-56c5-4d3c-ac50-a359ed996560" class="">
+</p></div></div><figure id="d33730ee-3457-4d27-8be6-97938fdd73c8" class="image"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%202.png"><img style="width:480px" src="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%202.png"/></a></figure><p id="d2aeb393-bf4e-4bd5-ad70-81a3370859e2" class="">
+</p><p id="9780ca40-31ca-4563-bd4a-6c5292b33f43" class="">Compared to traditional reinforcement learning,</p><figure id="73fe8043-c852-40da-90a3-d2ac98964a9c" class="image"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%203.png"><img style="width:1262px" src="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%203.png"/></a></figure><figure id="0964b6b1-2d0b-470e-924c-ace5398c2fab" class="image"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%204.png"><img style="width:2091px" src="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Untitled%204.png"/></a></figure><p id="4d14636f-8611-48c0-a2b9-415dc1505537" class="">With DRL(Deep Reinforcement Learning), we can solve complex problems end-to-end!</p><p id="5d7f0343-47e3-47bc-965d-3366971bc4ba" class="">
+</p><p id="c211a2c3-95da-4a24-9481-405808aa1690" class="">But there are challenges:</p><ol type="1" id="caabbaf9-074f-46d7-a6d6-2fefe20c7908" class="numbered-list" start="1"><li>Humans can learn incredibly quickly<ol type="a" id="523b370d-1ac2-4eac-aec1-1ece6ebe641f" class="numbered-list" start="1"><li>Deep RLs are usually slow</li></ol><ol type="a" id="1cd762ae-ba74-48f6-9170-8335f5f27d71" class="numbered-list" start="2"><li>probably because humans can reuse past knowledge</li></ol></li></ol><ol type="1" id="952cb376-3263-4303-b4a5-0824882383ad" class="numbered-list" start="2"><li>Not clear what the reward function should be</li></ol><ol type="1" id="3a16c1ac-e389-42f4-bf07-f3e5633f6f60" class="numbered-list" start="3"><li>Not clear what the role of prediction should be</li></ol><p id="d864cdba-e245-4dba-b387-3a59b3260e15" class="">
+</p><figure id="fea97219-d122-494c-91e5-97d553180b43" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Fundamental%20Theorem%20of%20RL%20fea97219d122494c91e597d553180b43.html">Fundamental Theorem of RL</a></figure><figure id="61377257-b94e-4083-8588-04cdbd92ae93" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Optimal%20Control%20and%20Planning%20Algorithms%20(and%20LQR)%2061377257b94e4083858804cdbd92ae93.html">Optimal Control and Planning Algorithms (and LQR)</a></figure><h1 id="5924bbfe-2181-4fa0-8081-38fa6ff34746" class="">Types of RL Algorithms</h1><p id="82e187a9-eaa7-4d29-96fa-f32aee1c3d38" class="">Remember the objective of RL:</p><figure id="614d961f-3915-4b4f-81ac-82bd6cd9d6af" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msup><mi>θ</mi><mo lspace="0em" rspace="0em">∗</mo></msup><mo>=</mo><munder><mrow><mi mathvariant="normal">arg max</mi><mo>⁡</mo></mrow><mi>θ</mi></munder><msub><mi mathvariant="double-struck">E</mi><mrow><mi>τ</mi><mo>∼</mo><msub><mi>p</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>τ</mi><mo stretchy="false">)</mo></mrow></msub><mo stretchy="false">[</mo><munder><mo>∑</mo><mi>t</mi></munder><mi>r</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\theta^{*} = \argmax_\theta \mathbb{E}_{\tau \sim p_\theta(\tau)}[\sum_t r(s_t,a_t)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.738696em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.738696em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∗</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.3000100000000003em;vertical-align:-1.250005em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.43055999999999994em;"><span style="top:-2.153452em;margin-left:0em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span><span class="mop"><span class="mord mathrm" style="margin-right:0.01389em;">arg</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathrm">max</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.946548em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathbb">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span><span class="mrel mtight">∼</span><span class="mord mtight"><span class="mord mathnormal mtight">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3448em;"><span style="top:-2.3487714285714287em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15122857142857138em;"><span></span></span></span></span></span></span><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mopen">[</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.250005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span></span></span></span></span></div></figure><ol type="1" id="b2b46139-6424-4679-88c9-03826aafd44d" class="numbered-list" start="1"><li>Policy Gradient<ol type="a" id="7ac0ee29-a567-4206-8ba6-61d783b280d0" class="numbered-list" start="1"><li>Directly differentiate the above objective</li></ol></li></ol><ol type="1" id="bd3109cb-ce57-4c6a-9ee8-1391920ac569" class="numbered-list" start="2"><li>Value-based<ol type="a" id="1f8e1ac6-e23f-4d2e-962f-b6d68a905344" class="numbered-list" start="1"><li>Estimate value function or Q-function of the optimal policy (no explicit policy)</li></ol><ol type="a" id="0b21f18f-1d8b-47b4-bd5e-30bedd7cc711" class="numbered-list" start="2"><li>Then use those functions to prove policy</li></ol></li></ol><ol type="1" id="06daa401-04a9-48eb-a3b2-0575d8679c10" class="numbered-list" start="3"><li>Actor-critic (A mix between policy gradient and value-based)<ol type="a" id="73648ed4-b5e1-4042-b1c4-06290c8f84e1" class="numbered-list" start="1"><li>Estimate value function or Q-function of the current policy, use it to improve policy</li></ol></li></ol><ol type="1" id="7fb4db12-d308-4046-a9fd-3f612e3dc821" class="numbered-list" start="4"><li>Model-based RL<ol type="a" id="430e5278-94c8-4d87-ba2a-8a49285b8613" class="numbered-list" start="1"><li>Estimate the transition model, and then<ol type="i" id="ecea13e6-a85d-454b-85e6-61debeb7ac7e" class="numbered-list" start="1"><li>Use it for planning (no explicit policy)</li></ol><ol type="i" id="c3e7c8be-c0fc-49f0-aee5-b9de1b291c19" class="numbered-list" start="2"><li>Use it to improve a policy</li></ol><ol type="i" id="f3321aa2-a2a4-4bf9-a921-c402c51a6178" class="numbered-list" start="3"><li>Other variants</li></ol></li></ol></li></ol><p id="1fd4f2ef-489d-4eb5-8d03-1c17949d4321" class="">
+</p><h2 id="66973836-d0c5-404d-ae87-eb03d091c7be" class="">Supervised Learning of RL</h2><figure id="0db8be65-9398-4a05-8268-5320af49e5e7" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Supervised%20Learning%20of%20Policies%20(Behavior%20Cloning)%200db8be6593984a0582685320af49e5e7.html">Supervised Learning of Policies (Behavior Cloning)</a></figure><h2 id="4a124c4f-127f-4de8-a219-eb078399fbdf" class="">Model-Based RL</h2><p id="5fcf8b5c-9c94-42c6-8663-f5113f327737" class="">e.g.</p><ol type="1" id="8d0b25f8-20fa-4687-98fc-c8cee21f8770" class="numbered-list" start="1"><li>Dyna</li></ol><ol type="1" id="7b884c2d-5480-4e99-9fd8-d5e3fce9829b" class="numbered-list" start="2"><li>Guided Policy Search</li></ol><p id="24ee3313-dd07-41ab-a336-bd1a67a6f74b" class="">Generate samples(run the policy) ⇒</p><p id="28483cca-b68f-4351-a833-6358114d4496" class="">Fit a model of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mi mathvariant="normal">∣</mi><msub><mi>s</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">p(s_{t+1}|s_t,a_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> ⇒</p><p id="1c8a2e5e-3f40-4c58-a420-511969306488" class="">Then improve the policy(a few options)</p><p id="eab1f1ef-881b-4c25-b0fd-5eecb57592f1" class="">
+</p><p id="328f1169-5554-414d-ac7e-8242a2e9d13d" class="">Improving policy:</p><ol type="1" id="c6d5e71a-2541-4560-b0db-e5242ec48482" class="numbered-list" start="1"><li>Just use the model to plan (no policy)<ol type="a" id="4ae81daf-760d-4df5-bbcd-0ed14aaebc8e" class="numbered-list" start="1"><li>Trajectory optimization / optimal control (primarily in continuous spaces)<ol type="i" id="cb8a470f-129d-4233-9a8e-5f0ea86d89fd" class="numbered-list" start="1"><li>Backprop to optimize over actions</li></ol></li></ol><ol type="a" id="1256c367-4f5a-480f-b0ae-c9bf4327117a" class="numbered-list" start="2"><li>Discrete planning in discrete action spaces<ol type="i" id="88228bf4-4f45-4540-bbbd-719d1aea5a38" class="numbered-list" start="1"><li>Monte Carlo tree search</li></ol></li></ol></li></ol><ol type="1" id="1376dc1a-8c51-4d2e-97d7-90e17fe4a475" class="numbered-list" start="2"><li>Backprop gradients into the policy<ol type="a" id="b099a374-a532-45c3-b504-36c6bcdd49c3" class="numbered-list" start="1"><li>Requires some tricks to make it work</li></ol></li></ol><ol type="1" id="b10e87ce-d168-4b02-aeb5-d8f32df46cfb" class="numbered-list" start="3"><li>Use the model to learn a separate value function or Q function<ol type="a" id="572a69d7-8d96-45bc-954d-5db23b34f4f4" class="numbered-list" start="1"><li>Dynamic Programming</li></ol><ol type="a" id="e26d805b-02d9-44d8-8b07-d60f497683c7" class="numbered-list" start="2"><li>Generate simulated experience for model-free learner</li></ol></li></ol><p id="60f8f224-f6c2-4e99-9486-13fb1557bde4" class="">
+</p><figure id="1c72b681-15d2-4503-b0a1-4fc3d095c3cd" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Model-based%20RL%201c72b68115d24503b0a14fc3d095c3cd.html">Model-based RL</a></figure><h2 id="d285deec-7ad9-4c8b-8d61-720efddadb8b" class="">Value function based algorithms</h2><p id="c58f3082-9fef-4c5a-909f-03472978de62" class="">e.g. </p><ol type="1" id="f2dd158e-80b9-4f92-9179-c6709a1c524b" class="numbered-list" start="1"><li>Q-Learning, DQN</li></ol><ol type="1" id="13ddedee-c333-499a-b57f-b048a2fb53f7" class="numbered-list" start="2"><li>Temporal Difference Learning</li></ol><ol type="1" id="60281ff7-a13c-44ce-b015-4213556ba97e" class="numbered-list" start="3"><li>Fitted Value Iteration</li></ol><p id="31c98e5f-b8f8-49a4-9caf-38bf8673251f" class="">Generate samples(run the policy) ⇒</p><p id="a28911d9-018a-46f9-9a00-f04ed7488585" class="">Fit a model of <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> or <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q(s,a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> ⇒</p><p id="14356a12-f24c-450d-8241-5568d08870fb" class="">Then improve the policy(set <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>π</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><msub><mrow><mi mathvariant="normal">arg max</mi><mo>⁡</mo></mrow><mi>θ</mi></msub><mi>Q</mi><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\pi(s) = \argmax_\theta Q(s,a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span class="mop"><span class="mord mathrm" style="margin-right:0.01389em;">arg</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathrm">max</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.24196799999999993em;"><span style="top:-2.4558600000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.24414em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">Q</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span>)</p><p id="b6f8b2e7-4620-4a73-b816-14d355d53d69" class="">
+</p><figure id="1ae3af63-d87a-47ab-a84b-bc17a28e1da8" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Value-based%20(and%20Q-)%20Learning%201ae3af63d87a47aba84bbc17a28e1da8.html">Value-based (and Q-) Learning</a></figure><h2 id="3c51e7ad-87cd-4c22-984f-0ceb2d2fecf1" class="">Direct Policy Gradients</h2><p id="c2b9a6e6-cd8f-4864-aae8-5606dd556e56" class="">e.g.</p><ol type="1" id="0641a90d-67b6-4006-a602-229c8b3133a8" class="numbered-list" start="1"><li>REINFORCE
+Natural Policy Gradient</li></ol><ol type="1" id="b56e46a5-5d38-44ef-a12e-6d433bef35b4" class="numbered-list" start="2"><li>Trust Region Policy Optimization</li></ol><p id="9cf145e1-e863-4861-8c08-542e3f8bc74d" class="">Generate samples (run the policy) ⇒</p><p id="7e54f763-0f02-4dce-9ef5-f2d0d70c4c6f" class="">Estimate the return</p><figure id="2f58afec-6d58-4941-8588-7b52505cc4f4" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>R</mi><mi>τ</mi></msub><mo>=</mo><munder><mo>∑</mo><mi>t</mi></munder><mi>r</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">R_\tau = \sum_t r(s_t,a_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.1132em;">τ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.3000100000000003em;vertical-align:-1.250005em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.250005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></div></figure><p id="ec15da2e-50b9-4a5b-abdc-a56f8a7bae9c" class="">Improve the policy by</p><figure id="52b1e589-65ae-4a27-a8dc-c6dc3e7f2371" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>θ</mi><mo>←</mo><mi>θ</mi><mo>+</mo><mi>α</mi><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi mathvariant="double-struck">E</mi><mo stretchy="false">[</mo><munder><mo>∑</mo><mi>t</mi></munder><mi>r</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\theta \leftarrow \theta + \alpha \nabla_\theta \mathbb{E}[\sum_t r(s_t,a_t)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.3000100000000003em;vertical-align:-1.250005em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathbb">E</span><span class="mopen">[</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.250005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span></span></span></span></span></div></figure><figure id="eefcdfac-2ff4-4969-8a97-32dcb0f22d87" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Policy%20Gradients%20eefcdfac2ff449698a9732dcb0f22d87.html">Policy Gradients</a></figure><h2 id="15857f6a-f951-456f-a163-1402a5b4b677" class="">Actor-critic</h2><p id="4d413148-f8b2-4496-8fb3-3ba25f7a071e" class="">e.g.</p><ol type="1" id="b8e1b9e0-c328-433f-995d-45715bc34371" class="numbered-list" start="1"><li>Asynchronous Advantage Actor-Critic (A3C)</li></ol><ol type="1" id="1076a70e-a0a4-45db-8c59-2426be0a1561" class="numbered-list" start="2"><li>Soft actor-critic (SAC)</li></ol><p id="7cbec6ac-ec51-47ae-b8ea-1be27c499863" class="">Generate samples ⇒</p><p id="0c39b7bd-08f6-4bfb-9a40-058372cdf9ba" class="">Fit a model <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">V(s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> or <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi><mo stretchy="false">(</mo><mi>s</mi><mo separator="true">,</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q(s,a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Q</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span></span></span></span></span><span>﻿</span></span> ⇒</p><p id="41da12ca-80f2-4bb5-8f12-d78ad0632a77" class="">Improve the policy</p><figure id="0f7e09ca-5c88-4dd3-a249-942d71370d7e" class="equation"><style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><div class="equation-container"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>θ</mi><mo>←</mo><mi>θ</mi><mo>+</mo><mi>α</mi><msub><mi mathvariant="normal">∇</mi><mi>θ</mi></msub><mi mathvariant="double-struck">E</mi><mo stretchy="false">[</mo><munder><mo>∑</mo><mi>t</mi></munder><mi>r</mi><mo stretchy="false">(</mo><msub><mi>s</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>a</mi><mi>t</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">\theta \leftarrow \theta + \alpha \nabla_\theta \mathbb{E}[\sum_t r(s_t,a_t)]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:2.3000100000000003em;vertical-align:-1.250005em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mord"><span class="mord">∇</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathbb">E</span><span class="mopen">[</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.8999949999999999em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.250005em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)]</span></span></span></span></span></div></figure><figure id="e236b8cf-42e0-48e5-8fae-11a046340884" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Actor-critic%20Methods%20e236b8cf42e048e58fae11a046340884.html">Actor-critic Methods</a></figure><h2 id="49f291c7-e8d2-4db6-a721-e6bb48e9682c" class="">Tradeoff between algorithms</h2><h3 id="b381548a-832a-406c-bc9d-c32232432289" class="">Sample efficiency</h3><blockquote id="928b413e-a1ef-49bb-8cd5-f429b12ae358" class="">“How many samples for a good policy?”</blockquote><figure id="f749bf39-b9c0-4715-b5cb-b33b751bdca2" class="image"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/4943B2C5-1FFE-4EDD-97D5-B14355429702.jpeg"><img style="width:1298px" src="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/4943B2C5-1FFE-4EDD-97D5-B14355429702.jpeg"/></a></figure><ol type="1" id="a774dd6f-71b8-426f-87dc-419b47e817d2" class="numbered-list" start="1"><li>Most important question: Is the algorithm off-policy?<ol type="a" id="38be2346-71e9-4728-ad9d-47bac74a867e" class="numbered-list" start="1"><li>Off policy means being able to improve the policy without generating new samples from that policy</li></ol><ol type="a" id="220883a4-0c34-48b6-b68b-1ca6d2eaf7aa" class="numbered-list" start="2"><li>On policy means we need to generate new samples even if the policy is changed a little bit</li></ol></li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="bde9066e-1bbc-459f-b087-d15b4b4d7261"><div style="font-size:1.5em"><span class="icon">⚠️</span></div><div style="width:100%">We may still want to use a less efficient algorithm because of the other tradeoffs and maybe the price of generating new samples is really cheap.</div></figure><p id="88519220-5f72-4607-85db-f68a8a274f1a" class="">
+</p><h3 id="e1ab6728-ba74-406e-a7ba-0f3dc9e5dda0" class="">Stability &amp; Ease of use</h3><ol type="1" id="13d45f96-18ea-468f-b303-bf98b7bdc8b2" class="numbered-list" start="1"><li>Does our policy converge, and if it does, to what?</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ab26b42f-a75e-43d2-beda-cdeff2d1f240"><div style="font-size:1.5em"><span class="icon">🔥</span></div><div style="width:100%">Supervised Learning: Almost always Gradient Descent is very likely to converge
+Reinforcement Learning: Often not Gradient Descent</div></figure><ol type="1" id="8906663e-fd4f-4054-8902-19d8963dc1b3" class="numbered-list" start="1"><li>Value function fitting: <ol type="a" id="cf0242e2-3759-4daa-a208-08c87fde8179" class="numbered-list" start="1"><li>Fixed point iteration</li></ol><ol type="a" id="4e5b64e0-13ac-49ba-b14b-aa5db0c9cb51" class="numbered-list" start="2"><li>At best, minimizes error of fit (“Bellman error”)<ol type="i" id="dd597b78-442d-4746-9e29-996ebe49302a" class="numbered-list" start="1"><li>Not the same as expected reward</li></ol></li></ol><ol type="a" id="27afcdeb-9136-43c0-b808-855a025af0e2" class="numbered-list" start="3"><li>At worst, doesn’t optimize anything<ol type="i" id="3f3494c7-eeb3-42e2-a94a-256e6143c72a" class="numbered-list" start="1"><li>Many popular DRL value fitting algorithms are not guaranteed to converge to anything in the nonlinear case</li></ol></li></ol></li></ol><ol type="1" id="ef312767-c252-4127-956e-e4dca9dbbd12" class="numbered-list" start="2"><li>Model-based RL<ol type="a" id="9a323d7f-19d9-4bba-8956-fa8e11f3eab3" class="numbered-list" start="1"><li>Model is not optimized for expected reward</li></ol><ol type="a" id="bd2b01c4-e74d-41ff-8f4f-f10931180df3" class="numbered-list" start="2"><li>Model minimizes error of fit<ol type="i" id="348cb224-9496-4e77-8236-519931161385" class="numbered-list" start="1"><li>This will converge</li></ol></li></ol><ol type="a" id="5aa59ea5-c1e4-4be8-841f-0ebd64c0aa5a" class="numbered-list" start="3"><li>No guarantee that better model = better policy</li></ol></li></ol><ol type="1" id="8eb4e767-2c6e-4ac3-83f4-10fc5e2405ed" class="numbered-list" start="3"><li>Policy Gradient<ol type="a" id="20cbe787-e95a-426c-bca0-bf7aa0e53b5e" class="numbered-list" start="1"><li>The only one that performs Gradient Descent / Ascent on the true objective</li></ol></li></ol><h3 id="314a80dd-c367-4686-ba74-059a633e4fb2" class="">Different assumptions</h3><ol type="1" id="c3898c4e-01ce-4eb9-b071-5ae91ee7f3ce" class="numbered-list" start="1"><li>Stochastic or deterministic environments?</li></ol><ol type="1" id="8891b712-fdf2-4c22-a9a0-f1c24f1411f6" class="numbered-list" start="2"><li>Continuous or discrete (states and action)?</li></ol><ol type="1" id="67bf466a-da42-4f91-a9c3-345b5a0d6495" class="numbered-list" start="3"><li>Episodic(finite <style>@import url('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.2/katex.min.css')</style><span data-token-index="0" contenteditable="false" class="notion-text-equation-token" style="user-select:all;-webkit-user-select:all;-moz-user-select:all"><span></span><span><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span></span></span></span></span><span>﻿</span></span>) or infinite horizon?</li></ol><ol type="1" id="9fb12105-3f35-418b-8194-86602b22cabd" class="numbered-list" start="4"><li>Different things are easy or hard in different settings<ol type="a" id="4ef70ecd-b7b0-410d-ad41-11b85e713c80" class="numbered-list" start="1"><li>Easier to represent the policy?</li></ol><ol type="a" id="57797f08-0021-4b2e-8d45-b359f398d3d7" class="numbered-list" start="2"><li>Easier to represent the model?</li></ol></li></ol><p id="87d36a94-c727-4b16-9b59-b1da72300d23" class="">
+</p><p id="d1747cbf-8c4e-4b96-9845-c220faf95ca2" class="">Common Assumptions:</p><ol type="1" id="da683fc4-f99d-470d-84de-462bb2ac115a" class="numbered-list" start="1"><li>Full observability<ol type="a" id="49a1f3ed-85d6-479a-af49-d237e47b07ed" class="numbered-list" start="1"><li>Generally assumed by value function fitting methods</li></ol><ol type="a" id="7a777e02-e5cb-4726-a804-73b860f70f1b" class="numbered-list" start="2"><li>Can be mitigated by adding recurrence</li></ol></li></ol><ol type="1" id="fb86793a-a793-4b0f-96f0-f348c87de88a" class="numbered-list" start="2"><li>Episodic Learning<ol type="a" id="5b4ab443-f2d5-488d-b97d-d162e6af9007" class="numbered-list" start="1"><li>Often assumed by pure policy gradient methods</li></ol><ol type="a" id="cfa4bffe-cf60-4e4d-b444-eae57c2dad01" class="numbered-list" start="2"><li>Assumed by some model-based RL methods</li></ol><ol type="a" id="74c4835a-cc06-44b9-9d42-cf790f924cc6" class="numbered-list" start="3"><li>Although other methods not assumed, tend to work better under this assumption</li></ol></li></ol><ol type="1" id="5d0a1e0f-76f6-413d-8d58-2852fa0ae128" class="numbered-list" start="3"><li>Continuity or smoothness<ol type="a" id="c4154a72-5f49-4f00-9ab1-7fa24e0939d7" class="numbered-list" start="1"><li>Assumed by some continuous value function learning methods</li></ol><ol type="a" id="b5628b2d-8935-49e8-8b99-d3749f9fa592" class="numbered-list" start="2"><li>Often assumed by some model-based RL methods</li></ol></li></ol><p id="91c85073-988c-4c16-a8de-8f885905226c" class="">
+</p><h1 id="c4eb564a-ff59-4572-8d6c-2f4eafe7148b" class="">Exploration</h1><figure id="e17371fb-5721-4662-a2df-090cc5be8a20" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Exploration%20e17371fb57214662a2df090cc5be8a20.html">Exploration</a></figure><h1 id="732a0399-35d9-45ad-9c5a-aede0d5838ea" class="">Offline RL (Batch RL / fully off-policy RL)</h1><figure id="926f0836-01cf-4e4c-9bc0-25111a6ae51c" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Offline%20RL%20926f083601cf4e4c9bc025111a6ae51c.html">Offline RL</a></figure><p id="6d279061-feb6-4dba-86fb-027ff7f00e52" class="">
+</p><h1 id="0e42bf23-b4e7-4b02-b733-21e3c0a78a36" class="">RL Theory</h1><figure id="97301096-dd5a-4091-b1db-5995ef559e13" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/RL%20Theory%2097301096dd5a4091b1db5995ef559e13.html">RL Theory</a></figure><h1 id="f9e9ce72-9597-44f0-be60-1a58be1621ee" class="">Variational Inference</h1><blockquote id="acd2ca7c-5fbd-4e92-bf31-01b6ff9dea6d" class="">No RL content in this chapter, but heavy links to RL algorithms</blockquote><figure id="a8fcb6e3-adb2-4208-b2b3-bd501cd7786b" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Variational%20Inference%20a8fcb6e3adb24208b2b3bd501cd7786b.html">Variational Inference</a></figure><h2 id="a24de484-d019-43d9-a487-664385e1faf6" class="">Control as an Inference Problem</h2><figure id="bce8aad8-5a52-4fea-b47c-ca77951a696e" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Control%20as%20an%20inference%20problem%20bce8aad85a524feab47cca77951a696e.html">Control as an inference problem</a></figure><h1 id="4418ccfc-d1c1-41b9-aeda-78e9ce99a0a3" class="">Inverse Reinforcement Learning</h1><figure id="ef89e78f-c0d0-4fb8-b0f7-c69dad2523f9" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/IRL%20%E2%87%92%20Inverse%20Reinforcement%20Learning%20ef89e78fc0d04fb8b0f7c69dad2523f9.html">IRL ⇒ Inverse Reinforcement Learning</a></figure><h1 id="63f2340e-b1c3-4c51-9d9d-ae61ed68a9e2" class="">Transfer Learning &amp; Meta-Learning</h1><figure id="a4b670aa-600a-421b-a811-db6e93a7d023" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Transfer%20Learning%20&amp;%20Meta-RL%20a4b670aa600a421ba811db6e93a7d023.html">Transfer Learning &amp; Meta-RL</a></figure><p id="1e9ab26b-1b13-4ff8-9a55-f585e5255afb" class="">
+</p><h1 id="66f1e7ca-8d03-4331-bbb7-b11fc4f65257" class="">Open Problems</h1><figure id="455952ce-506e-477b-879e-2ffcce7d50b7" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Open%20problems%20in%20RL%20455952ce506e477b879e2ffcce7d50b7.html">Open problems in RL</a></figure><h1 id="5bed9e27-6a7b-4304-892a-27b97c33d50b" class="">Guest Lectures</h1><figure id="57d1f508-c2a3-4501-8253-ab27b752d721" class="link-to-page"><a href="CS%20285%20Notes%205d32a19a08a14e1baed4e7caec03771e/Guest%20Lectures%2057d1f508c2a345018253ab27b752d721.html">Guest Lectures</a></figure><p id="689b751f-d14a-4c8e-ac3c-1329593a8159" class="">
+</p><p id="dfb4c868-dc8a-4245-8780-e0ba49dc8ac9" class="">
+</p></div></article></body></html>
